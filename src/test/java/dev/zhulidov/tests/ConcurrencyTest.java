@@ -4,6 +4,7 @@ import dev.zhulidov.tests.support.BaseTest;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
 import io.qameta.allure.Story;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 
@@ -18,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ConcurrencyTest extends BaseTest {
 
     @Test
-    @Step("Конкурентный LOGIN одним токеном — успеть должен только один")
+    @DisplayName("Конкурентный LOGIN одним токеном — успеть должен только один")
     void concurrentLogin_onlyOneShouldSucceed() throws InterruptedException {
         ExecutorService executor = Executors.newFixedThreadPool(8);
 
@@ -40,7 +41,7 @@ public class ConcurrencyTest extends BaseTest {
     }
 
     @Test
-    @Step("Конкуррентный LOGOUT должен вернуть только один 200")
+    @DisplayName("Конкуррентный LOGOUT должен вернуть только один 200")
     void concurrentLogout_shouldReturnOnlyOne200() throws IOException, InterruptedException {
         ExecutorService executor = Executors.newFixedThreadPool(8);
         sendEndpointRequest(token,"LOGIN");
