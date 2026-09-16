@@ -51,6 +51,6 @@ mvn clean test allure:report
 
 Отчёт будет доступен в `target/site/allure-maven-plugin/index.html`.
 
-## Тест-план и находки
+## Тест-план 
 
 Подробное описание покрытых сценариев, тест-стратегии  — в [REPORT.md](REPORT.md).
