@@ -94,6 +94,9 @@
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
                 <version>3.0.3</version>
+                <configuration>
+                    <reportVersion>3.14.3</reportVersion>
+                </configuration>
             </plugin>
         </plugins>
     </build>

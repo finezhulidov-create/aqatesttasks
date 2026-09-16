@@ -1,6 +1,8 @@
 package dev.zhulidov.tests;
 
 import dev.zhulidov.tests.support.BaseTest;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +11,8 @@ import java.net.http.HttpResponse;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
+@Feature("POST /endpoint")
+@Story("LOGOUT")
 public class LogoutTest extends BaseTest     {
     @Test
     @DisplayName("Логаут должен вернуть 200 ")

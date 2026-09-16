@@ -1,6 +1,8 @@
 package dev.zhulidov.tests;
 
 import dev.zhulidov.tests.support.BaseTest;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.*;
 
 import java.io.IOException;
@@ -10,7 +12,8 @@ import java.net.http.HttpResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-
+@Feature("POST /endpoint")
+@Story("LOGIN")
 public class LoginTest extends BaseTest {
 
     @Test

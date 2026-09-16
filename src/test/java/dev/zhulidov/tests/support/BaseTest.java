@@ -1,6 +1,8 @@
 package dev.zhulidov.tests.support;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
+import io.qameta.allure.Allure;
+import io.qameta.allure.Step;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -53,16 +55,20 @@ public abstract class BaseTest {
         }
         return sb.toString();
     }
-
+    @Step("Отправка запроса на /endpoint с action={action}")
     protected HttpResponse<String> sendEndpointRequest(String token, String action) throws IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
+        String body = "token="+token+"&action="+action;
+        Allure.addAttachment("Тело запроса", body);
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:8080/endpoint"))
                 .header("Content-Type", "application/x-www-form-urlencoded")
                 .header("Accept", "application/json")
                 .header("X-Api-Key", "qazWSXedc")
-                .POST(HttpRequest.BodyPublishers.ofString("token="+token+"&action="+action))
+                .POST(HttpRequest.BodyPublishers.ofString(body))
                 .build();
-        return client.send(request,HttpResponse.BodyHandlers.ofString());
+        var response = client.send(request,HttpResponse.BodyHandlers.ofString());
+        Allure.addAttachment("Ответ (статус " + response.statusCode()+")", response.body());
+        return response;
     }
 }
