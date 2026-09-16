@@ -19,7 +19,7 @@ src/test/java/dev/zhulidov/tests/
 ├── LoginTest.java              — сценарии LOGIN
 ├── ActionTest.java             — сценарии ACTION
 ├── LogoutTest.java             — сценарии LOGOUT
-├── ConcurrencyTest.java        — сценарий конкурентного доступа к LOGIN с одинаковым токеном
+├── ConcurrencyTest.java        — сценарии конкурентного доступа 
 └── RequestValidationTest.java  — валидация запроса (API key, формат токена, обязательные параметры)
 ```
 
